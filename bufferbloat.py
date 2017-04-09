@@ -80,8 +80,8 @@ class BBTopo(Topo):
         switch = self.addSwitch('s0')
 
         # TODO: Add links with appropriate characteristics
-        self.addLink(h1, switch, bw=1000,)
-        self.addLink(h2, switch, bw=1.5, max_queue_size=100)
+        self.addLink(h1, switch, bw=args.bw_host, delay=str(args.delay)+"ms")
+        self.addLink(h2, switch, bw=args.bw_net, max_queue_size=100, delay=str(args.delay)+"ms")
 
         return
 
