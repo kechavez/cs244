@@ -130,7 +130,7 @@ def start_ping(net):
     # i.e. ping ... > /path/to/ping.
     h1 = net.get('h1')
     h2 = net.get('h2')
-    h1.popen("ping", h2.IP(),shell=True)
+    h1.popen("ping %s > %s" % (h2.IP(), args.dir+"/ping.txt"), shell=True)
     pass
 
 
@@ -160,6 +160,7 @@ def bufferbloat():
 
     # TODO: Start iperf, webservers, etc.
     start_iperf(net)
+    start_ping(net)
 
     # TODO: measure the time it takes to complete webpage transfer
     # from h1 to h2 (say) 3 times.  Hint: check what the following
