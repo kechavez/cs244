@@ -128,6 +128,9 @@ def start_ping(net):
     # Hint: Use host.popen(cmd, shell=True).  If you pass shell=True
     # to popen, you can redirect cmd's output using shell syntax.
     # i.e. ping ... > /path/to/ping.
+    h1 = net.get('h1')
+    h2 = net.get('h2')
+    h1.popen("ping", h2.IP(),shell=True)
     pass
 
 
