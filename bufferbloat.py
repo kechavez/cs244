@@ -130,7 +130,7 @@ def start_ping(net):
     # i.e. ping ... > /path/to/ping.
     h1 = net.get('h1')
     h2 = net.get('h2')
-    h1.popen("ping %s > %s" % (h2.IP(), args.dir+"/ping.txt"), shell=True)
+    h1.popen("ping -i .1 %s > %s" % (h2.IP(), args.dir+"/ping.txt"), shell=True)
     pass
 
 
