@@ -161,6 +161,7 @@ def bufferbloat():
     # TODO: Start iperf, webservers, etc.
     start_iperf(net)
     start_ping(net)
+    start_webserver(net)
 
     # TODO: measure the time it takes to complete webpage transfer
     # from h1 to h2 (say) 3 times.  Hint: check what the following
@@ -173,6 +174,7 @@ def bufferbloat():
     start_time = time()
     while True:
         # do the measurement (say) 3 times.
+        h2.popen("curl -o /dev/null -s -w %{time_total} %s" % (h1.IP()), shell=True)
         sleep(5)
         now = time()
         delta = now - start_time
