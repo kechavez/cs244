@@ -65,15 +65,15 @@ parser.add_argument('--cong',
 
 # Expt parameters
 args = parser.parse_args()
-print "args = " + str(args)
+# print "args = " + str(args)
 
 class BBTopo(Topo):
     "Simple topology for bufferbloat experiment."
 
     def build(self, r=2):
         # TODO: create two hosts
-        h1 = sel.f.addHost('h1')
-        h2 = sel.f.addHost('h2')
+        h1 = self.addHost('h1')
+        h2 = self.addHost('h2')
 
         # Here I have created a switch.  If you change its name, its
         # interface names will change from s0-eth1 to newname-eth1.
@@ -111,6 +111,8 @@ def start_iperf(net):
     server = h2.popen("iperf -s -w 16m")
     # TODO: Start the iperf client on h1.  Ensure that you create a
     # long lived TCP flow.
+    h1 = net.get('h1')
+    net.iperf( (h1,h2) )
 
 def start_webserver(net):
     h1 = net.get('h1')
@@ -154,7 +156,7 @@ def bufferbloat():
                       outfile='%s/q.txt' % (args.dir))
 
     # TODO: Start iperf, webservers, etc.
-    # start_iperf(net)
+    start_iperf(net)
 
     # TODO: measure the time it takes to complete webpage transfer
     # from h1 to h2 (say) 3 times.  Hint: check what the following
