@@ -133,6 +133,9 @@ def start_ping(net):
     h1.popen("ping -i .1 %s > %s" % (h2.IP(), args.dir+"/ping.txt"), shell=True)
     pass
 
+def run_curl():
+    return h2.popen("curl -o /dev/null -s -w %s %s" % \
+            ("%{time_total}", h1.IP()), shell=True).communicate()[0]
 
 def bufferbloat():
     if not os.path.exists(args.dir):
@@ -177,8 +180,8 @@ def bufferbloat():
     tts = []
     while True:
         # do the measurement (say) 3 times.
-        tts.append(h2.popen("curl -o /dev/null -s -w %s %s" % \
-            ("%{time_total}", h1.IP()), shell=True).communicate()[0])
+        for i in range(0,3):
+            tts.append(run_curl())
         sleep(5)
         now = time()
         delta = now - start_time
