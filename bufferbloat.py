@@ -168,13 +168,17 @@ def bufferbloat():
     # command does: curl -o /dev/null -s -w %{time_total} google.com
     # Now use the curl command to fetch webpage from the webserver you
     # spawned on host h1 (not from google!)
+    h1 = net.get('h1')
+    h2 = net.get('h2')
 
     # Hint: have a separate function to do this and you may find the
     # loop below useful.
     start_time = time()
+    tts = []
     while True:
         # do the measurement (say) 3 times.
-        h2.popen("curl -o /dev/null -s -w %{time_total} %s" % (h1.IP()), shell=True)
+        tts.append(h2.popen("curl -o /dev/null -s -w %s %s" % \
+            ("%{time_total}", h1.IP()), shell=True).communicate()[0])
         sleep(5)
         now = time()
         delta = now - start_time
@@ -185,6 +189,7 @@ def bufferbloat():
     # TODO: compute average (and standard deviation) of the fetch
     # times.  You don't need to plot them.  Just note it in your
     # README and explain.
+    print "tts is " + str(tts)
 
     # Hint: The command below invokes a CLI which you can use to
     # debug.  It allows you to run arbitrary commands inside your
