@@ -109,10 +109,12 @@ def start_iperf(net):
     # that the TCP flow is not receiver window limited.  If it is,
     # there is a chance that the router buffer may not get filled up.
     server = h2.popen("iperf -s -w 16m")
+    print "opened done."
     # TODO: Start the iperf client on h1.  Ensure that you create a
     # long lived TCP flow.
     h1 = net.get('h1')
-    net.iperf( (h1,h2) )
+    client = h1.popen("iperf -s -w 16m")
+    # net.iperf( (h1,h2), seconds=args.time )
 
 def start_webserver(net):
     h1 = net.get('h1')
@@ -133,9 +135,9 @@ def start_ping(net):
     h1.popen("ping -i .1 %s > %s" % (h2.IP(), args.dir+"/ping.txt"), shell=True)
     pass
 
-def run_curl():
-    return h2.popen("curl -o /dev/null -s -w %s %s" % \
-            ("%{time_total}", h1.IP()), shell=True).communicate()[0]
+def run_curl(source, dest):
+    return source.popen("curl -o /dev/null -s -w %s %s" % \
+            ("%{time_total}", dest.IP()), shell=True).communicate()[0]
 
 def bufferbloat():
     if not os.path.exists(args.dir):
@@ -163,8 +165,11 @@ def bufferbloat():
 
     # TODO: Start iperf, webservers, etc.
     start_iperf(net)
+    print "start iperf"
     start_ping(net)
+    print "start ping"
     start_webserver(net)
+    print "start server"
 
     # TODO: measure the time it takes to complete webpage transfer
     # from h1 to h2 (say) 3 times.  Hint: check what the following
@@ -181,7 +186,7 @@ def bufferbloat():
     while True:
         # do the measurement (say) 3 times.
         for i in range(0,3):
-            tts.append(run_curl())
+            tts.append(run_curl(h2, h1))
         sleep(5)
         now = time()
         delta = now - start_time
