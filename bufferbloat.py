@@ -109,12 +109,11 @@ def start_iperf(net):
     # that the TCP flow is not receiver window limited.  If it is,
     # there is a chance that the router buffer may not get filled up.
     server = h2.popen("iperf -s -w 16m")
-    print "opened done."
     # TODO: Start the iperf client on h1.  Ensure that you create a
     # long lived TCP flow.
     h1 = net.get('h1')
-    client = h1.popen("iperf -s -w 16m")
-    # net.iperf( (h1,h2), seconds=args.time )
+    # client = h1.popen("iperf -s -w 16m")
+    net.iperf( (h1,h2), seconds=args.time )
 
 def start_webserver(net):
     h1 = net.get('h1')
@@ -165,11 +164,8 @@ def bufferbloat():
 
     # TODO: Start iperf, webservers, etc.
     start_iperf(net)
-    print "start iperf"
     start_ping(net)
-    print "start ping"
     start_webserver(net)
-    print "start server"
 
     # TODO: measure the time it takes to complete webpage transfer
     # from h1 to h2 (say) 3 times.  Hint: check what the following
