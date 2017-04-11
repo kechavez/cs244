@@ -112,7 +112,8 @@ def start_iperf(net):
     # TODO: Start the iperf client on h1.  Ensure that you create a
     # long lived TCP flow.
     h1 = net.get('h1')
-    client = h1.popen("iperf -c %s -w 16m" % (h2.IP()))
+    client = h1.popen("iperf -c %s -t %s -w 16m" % (h2.IP(), args.time))
+    print "end perf"
     # net.iperf( (h1,h2), seconds=args.time )
 
 def start_webserver(net):
@@ -131,8 +132,8 @@ def start_ping(net):
     # i.e. ping ... > /path/to/ping.
     h1 = net.get('h1')
     h2 = net.get('h2')
+    print "start ping"
     h1.popen("ping -i .1 %s > %s" % (h2.IP(), args.dir+"/ping.txt"), shell=True)
-    pass
 
 def run_curl(source, dest):
     return source.popen("curl -o /dev/null -s -w %s %s" % \
@@ -163,17 +164,18 @@ def bufferbloat():
                       outfile='%s/q.txt' % (args.dir))
 
     # TODO: Start iperf, webservers, etc.
+    h1 = net.get('h1')
+    h2 = net.get('h2')
+    start_webserver(net)
+
     start_iperf(net)
     start_ping(net)
-    start_webserver(net)
 
     # TODO: measure the time it takes to complete webpage transfer
     # from h1 to h2 (say) 3 times.  Hint: check what the following
     # command does: curl -o /dev/null -s -w %{time_total} google.com
     # Now use the curl command to fetch webpage from the webserver you
     # spawned on host h1 (not from google!)
-    h1 = net.get('h1')
-    h2 = net.get('h2')
 
     # Hint: have a separate function to do this and you may find the
     # loop below useful.
