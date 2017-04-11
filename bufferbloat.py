@@ -104,7 +104,6 @@ def start_qmon(iface, interval_sec=0.1, outfile="q.txt"):
 
 def start_iperf(net):
     h2 = net.get('h2')
-    print "Starting iperf server..."
     # For those who are curious about the -w 16m parameter, it ensures
     # that the TCP flow is not receiver window limited.  If it is,
     # there is a chance that the router buffer may not get filled up.
@@ -113,7 +112,6 @@ def start_iperf(net):
     # long lived TCP flow.
     h1 = net.get('h1')
     client = h1.popen("iperf -c %s -t %s -w 16m" % (h2.IP(), args.time))
-    print "end perf"
     # net.iperf( (h1,h2), seconds=args.time )
 
 def start_webserver(net):
@@ -132,7 +130,6 @@ def start_ping(net):
     # i.e. ping ... > /path/to/ping.
     h1 = net.get('h1')
     h2 = net.get('h2')
-    print "start ping"
     h1.popen("ping -i .1 %s > %s" % (h2.IP(), args.dir+"/ping.txt"), shell=True)
 
 def run_curl(source, dest):
@@ -190,7 +187,7 @@ def bufferbloat():
         delta = now - start_time
         if delta > args.time:
             break
-        print "%.1fs left..." % (args.time - delta)
+        # print "%.1fs left..." % (args.time - delta)
 
     # TODO: compute average (and standard deviation) of the fetch
     # times.  You don't need to plot them.  Just note it in your
