@@ -180,9 +180,13 @@ def bufferbloat():
     tts = []
     while True:
         # do the measurement (say) 3 times.
+        timeSum=0
         for i in range(0,3):
-            tts.append(run_curl(h2, h1))
-        sleep(5)
+            timer = run_curl(h2, h1)
+            tts.append(timer)
+            timeSum+=float(timer)
+        if timeSum<=5:
+            sleep(5-timeSum)
         now = time()
         delta = now - start_time
         if delta > args.time:
