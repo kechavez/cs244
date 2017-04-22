@@ -1,0 +1,152 @@
+Listening on :::9090
+Sending to 100.64.0.1:9090
+Average capacity: 5.04 Mbits/s
+Average throughput: 1.73 Mbits/s (34.3% utilization)
+95th percentile per-packet queueing delay: 55 ms
+95th percentile signal delay: 159 ms
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Listening on :::9090
+Sending to 100.64.0.1:9090
+Average capacity: 5.04 Mbits/s
+Average throughput: 2.95 Mbits/s (58.6% utilization)
+95th percentile per-packet queueing delay: 96 ms
+95th percentile signal delay: 271 ms
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Listening on :::9090
+Sending to 100.64.0.1:9090
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Average capacity: 5.04 Mbits/s
+Average throughput: 3.84 Mbits/s (76.2% utilization)
+95th percentile per-packet queueing delay: 142 ms
+95th percentile signal delay: 395 ms
+Listening on :::9090
+Sending to 100.64.0.1:9090
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Average capacity: 5.04 Mbits/s
+Average throughput: 4.32 Mbits/s (85.6% utilization)
+95th percentile per-packet queueing delay: 191 ms
+95th percentile signal delay: 496 ms
+Listening on :::9090
+Sending to 100.64.0.1:9090
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Average capacity: 5.04 Mbits/s
+Average throughput: 4.62 Mbits/s (91.7% utilization)
+95th percentile per-packet queueing delay: 238 ms
+95th percentile signal delay: 603 ms
+Listening on :::9090
+Sending to 100.64.0.1:9090
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Average capacity: 5.04 Mbits/s
+Average throughput: 4.71 Mbits/s (93.4% utilization)
+95th percentile per-packet queueing delay: 290 ms
+95th percentile signal delay: 709 ms
+Listening on :::9090
+Sending to 100.64.0.1:9090
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Average capacity: 5.04 Mbits/s
+Average throughput: 4.83 Mbits/s (95.7% utilization)
+95th percentile per-packet queueing delay: 344 ms
+95th percentile signal delay: 808 ms
+Listening on :::9090
+Sending to 100.64.0.1:9090
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Average capacity: 5.04 Mbits/s
+Average throughput: 4.91 Mbits/s (97.4% utilization)
+95th percentile per-packet queueing delay: 401 ms
+95th percentile signal delay: 894 ms
+Listening on :::9090
+Sending to 100.64.0.1:9090
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Average capacity: 5.04 Mbits/s
+Average throughput: 4.92 Mbits/s (97.6% utilization)
+95th percentile per-packet queueing delay: 460 ms
+95th percentile signal delay: 971 ms
+Listening on :::9090
+Sending to 100.64.0.1:9090
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Average capacity: 5.04 Mbits/s
+Average throughput: 4.95 Mbits/s (98.1% utilization)
+95th percentile per-packet queueing delay: 510 ms
+95th percentile signal delay: 1039 ms
+Listening on :::9090
+Sending to 100.64.0.1:9090
+Average capacity: 5.04 Mbits/s
+Average throughput: 4.98 Mbits/s (98.8% utilization)
+95th percentile per-packet queueing delay: 574 ms
+95th percentile signal delay: 1124 ms
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Listening on :::9090
+Sending to 100.64.0.1:9090
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Average capacity: 5.04 Mbits/s
+Average throughput: 5.01 Mbits/s (99.5% utilization)
+95th percentile per-packet queueing delay: 634 ms
+95th percentile signal delay: 1187 ms
+Listening on :::9090
+Sending to 100.64.0.1:9090
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Average capacity: 5.04 Mbits/s
+Average throughput: 5.02 Mbits/s (99.7% utilization)
+95th percentile per-packet queueing delay: 694 ms
+95th percentile signal delay: 1258 ms
+Listening on :::9090
+Sending to 100.64.0.1:9090
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Average capacity: 5.04 Mbits/s
+Average throughput: 4.96 Mbits/s (98.4% utilization)
+95th percentile per-packet queueing delay: 757 ms
+95th percentile signal delay: 1327 ms
+Listening on :::9090
+Sending to 100.64.0.1:9090
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Average capacity: 5.04 Mbits/s
+Average throughput: 4.99 Mbits/s (98.9% utilization)
+95th percentile per-packet queueing delay: 829 ms
+95th percentile signal delay: 1407 ms
+Listening on :::9090
+Sending to 100.64.0.1:9090
+Average capacity: 5.04 Mbits/s
+Average throughput: 5.01 Mbits/s (99.4% utilization)
+95th percentile per-packet queueing delay: 891 ms
+95th percentile signal delay: 1462 ms
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Listening on :::9090
+Sending to 100.64.0.1:9090
+Average capacity: 5.04 Mbits/s
+Average throughput: 5.02 Mbits/s (99.6% utilization)
+95th percentile per-packet queueing delay: 961 ms
+95th percentile signal delay: 1518 ms
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Listening on :::9090
+Sending to 100.64.0.1:9090
+Average capacity: 5.04 Mbits/s
+Average throughput: 4.59 Mbits/s (91.0% utilization)
+95th percentile per-packet queueing delay: 934 ms
+95th percentile signal delay: 13586 ms
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
+Listening on :::9090
+Sending to 100.64.0.1:9090
+Average capacity: 5.04 Mbits/s
+Average throughput: 5.02 Mbits/s (99.6% utilization)
+95th percentile per-packet queueing delay: 1112 ms
+95th percentile signal delay: 1663 ms
+terminate called after throwing an instance of 'unix_error'
+  what():  send: Invalid argument
