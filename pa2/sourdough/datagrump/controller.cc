@@ -10,7 +10,7 @@ Controller::Controller( const bool debug , const unsigned int w )
   : debug_( debug ),
   wsize_(w),
   r_wsize(0),
-  ignore_count(0)
+  timeout_ack(0)
 {
   cout << "wSIZE IS : " << wsize_ << endl;
 }
@@ -56,19 +56,18 @@ void Controller::ack_received( const uint64_t sequence_number_acked,
   /* Default: take no action */
   int64_t rtt = timestamp_ack_received - send_timestamp_acked; 
 	
-  cout << "recv is " << timestamp_ack_received << endl;
-  cout << "send is " << send_timestamp_acked << endl;
-  cout << "rtt is " << rtt << endl;
-  if (ignore_count == 0 && wsize_ >=2 && rtt > Controller::timeout_ms() ) {
+  // cout << "recv is " << timestamp_ack_received << endl;
+  // cout << "send is " << send_timestamp_acked << endl;
+  // cout << "rtt is " << rtt << endl;
+  if (timestamp_ack_received - timeout_ack > Controller::timeout_ms() 
+      && wsize_ >=2 && rtt > Controller::timeout_ms() ) {
+    timeout_ack = timestamp_ack_received;
     wsize_ /= 2;
     r_wsize = 0;
-    ignore_count = 1;
   }
   else {
-    if (ignore_count>0)
-	ignore_count--;
     r_wsize++;
-    if (wsize_ % r_wsize == 0) {
+    if (wsize_ - r_wsize == 0) {
       wsize_ += 1;
       r_wsize = 0;
     }
@@ -88,5 +87,5 @@ void Controller::ack_received( const uint64_t sequence_number_acked,
    before sending one more datagram */
 unsigned int Controller::timeout_ms( void )
 {
-  return 400; /* timeout of one second */
+  return 100; /* timeout of one second */
 }

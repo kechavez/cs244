@@ -11,7 +11,7 @@ private:
   bool debug_; /* Enables debugging output */
   unsigned int wsize_;
   unsigned int r_wsize;
-  unsigned int ignore_count; // Ignore number of packets before MD.
+  unsigned int timeout_ack;
 
   /* Add member variables here */
 
