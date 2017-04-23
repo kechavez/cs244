@@ -25,7 +25,7 @@ my $tracedir = $prefix . q{/../share/mahimahi/traces};
 # run the sender inside a linkshell and a delayshell
 my @command = qw{mm-delay 20 mm-link UPLINK DOWNLINK --meter-uplink --meter-uplink-delay --once --uplink-log=/tmp/contest_uplink_log -- sh -c};
 
-push @command, q{./sender $MAHIMAHI_BASE 9090 $WSIZE};
+push @command, q{./sender $MAHIMAHI_BASE 9090 $WSIZE debug};
 
 # for the contest, we will send data over Verizon's downlink
 # (datagrump sender's uplink)
