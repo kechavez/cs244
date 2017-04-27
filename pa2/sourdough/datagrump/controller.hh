@@ -12,6 +12,8 @@ private:
   unsigned int wsize_;
   unsigned int r_wsize;
   unsigned int timeout_ack;
+  int64_t rtt_prev;
+  int64_t rtt_delta;
 
   /* Add member variables here */
 

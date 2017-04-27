@@ -43,6 +43,7 @@ int main( int argc, char *argv[] )
   }
   bool debug = false;
   if ( argc == 5 and string( argv[ 4 ] ) == "debug" ) {
+    cout << "DEBUG ON\n";
     debug = true;
   } else if ( argc == 4 ) {
     /* do nothing */
