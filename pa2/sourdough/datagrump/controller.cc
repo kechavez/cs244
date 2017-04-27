@@ -73,7 +73,13 @@ void Controller::ack_received( const uint64_t sequence_number_acked,
 	wsize_=1;
     }
   }
-  
+  else if (rtt < (Controller::timeout_ms()/2)) {
+    r_wsize++;
+    if (wsize_ - r_wsize == 0) {
+      wsize_ += 4;
+      r_wsize = 0;
+    }
+  }
   else {
     r_wsize++;
     if (wsize_ - r_wsize == 0) {
