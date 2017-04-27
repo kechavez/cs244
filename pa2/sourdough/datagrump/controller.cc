@@ -6,9 +6,9 @@
 using namespace std;
 
 /* Default constructor */
-Controller::Controller( const bool debug , const unsigned int w )
+Controller::Controller( const bool debug) 
   : debug_( debug ),
-  wsize_(w),
+  wsize_(1),
   r_wsize(0),
   timeout_ack(0)
 {

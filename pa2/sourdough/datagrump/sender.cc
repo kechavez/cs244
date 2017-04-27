@@ -31,7 +31,7 @@ private:
 
 public:
   DatagrumpSender( const char * const host, const char * const port,
-		   const int unsigned w, const bool debug );
+		   const bool debug );
   int loop( void );
 };
 
@@ -41,11 +41,11 @@ int main( int argc, char *argv[] )
   if ( argc < 1 ) { /* for sticklers */
     abort();
   }
+
   bool debug = false;
-  if ( argc == 5 and string( argv[ 4 ] ) == "debug" ) {
-    cout << "DEBUG ON\n";
+  if ( argc == 4 and string( argv[ 3 ] ) == "debug" ) {
     debug = true;
-  } else if ( argc == 4 ) {
+  } else if ( argc == 3 ) {
     /* do nothing */
   } else {
     cerr << "Usage: " << argv[ 0 ] << " HOST PORT [debug]" << endl;
@@ -54,16 +54,15 @@ int main( int argc, char *argv[] )
 
   /* create sender object to handle the accounting */
   /* all the interesting work is done by the Controller */
-  DatagrumpSender sender( argv[ 1 ], argv[ 2 ], atoi(argv[3]), debug );
+  DatagrumpSender sender( argv[ 1 ], argv[ 2 ], debug );
   return sender.loop();
 }
 
 DatagrumpSender::DatagrumpSender( const char * const host,
 				  const char * const port,
-			          const unsigned int w,
-				  const bool debug)
+				  const bool debug )
   : socket_(),
-    controller_( debug, w ),
+    controller_( debug ),
     sequence_number_( 0 ),
     next_ack_expected_( 0 )
 {

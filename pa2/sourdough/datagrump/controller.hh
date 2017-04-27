@@ -12,8 +12,6 @@ private:
   unsigned int wsize_;
   unsigned int r_wsize;
   unsigned int timeout_ack;
-  int64_t rtt_prev;
-  int64_t rtt_delta;
 
   /* Add member variables here */
 
@@ -23,7 +21,7 @@ public:
      the call site as well (in sender.cc) */
 
   /* Default constructor */
-  Controller( const bool debug, const unsigned int w );
+  Controller( const bool debug);
 
   /* Get current window size, in datagrams */
   unsigned int window_size( void );
