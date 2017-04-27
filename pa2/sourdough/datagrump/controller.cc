@@ -65,14 +65,15 @@ void Controller::ack_received( const uint64_t sequence_number_acked,
     wsize_ /= 2;
     r_wsize = 0;
   }
-  else if (timestamp_ack_received - timeout_ack > Controller::timeout_ms() && rtt + 10 > Controller::timeout_ms()) {
+  else if (timestamp_ack_received - timeout_ack > Controller::timeout_ms() && rtt + 5 > 		   Controller::timeout_ms()) {
     timeout_ack = timestamp_ack_received;
     r_wsize = 0;
     wsize_=(3*wsize_)/4;
     if (wsize_<1) {
 	wsize_=1;
     }
-}
+  }
+  
   else {
     r_wsize++;
     if (wsize_ - r_wsize == 0) {
