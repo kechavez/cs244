@@ -55,14 +55,15 @@ void Controller::ack_received( const uint64_t sequence_number_acked,
 {
   /* Default: take no action */
   int64_t rtt = timestamp_ack_received - send_timestamp_acked; 
+  int64_t c_thresh = 115; // Part C
 	
   
   //if (timestamp_ack_received - timeout_ack > Controller::timeout_ms() && wsize_ >=2 && rtt > Controller::timeout_ms() ) { // Part B
-  if (rtt>Controller::timeout_ms() - 10) { // Part C
+  if (rtt > c_thresh) { // Part C
     timeout_ack = timestamp_ack_received;
     //wsize_ /= 2; // Part B
     if(wsize_>20) {
-    	wsize_-=10; // Part C
+    	wsize_ -= wsize_/4; // Part C
     }
     else if (wsize_>5) {
         wsize_-=2;
@@ -70,8 +71,15 @@ void Controller::ack_received( const uint64_t sequence_number_acked,
     r_wsize = 0;
   }
   else {
-    r_wsize++;
-    if (wsize_ - r_wsize == 0) {
+    // r_wsize_++; // Part B
+
+    // Part C
+    if (rtt < c_thresh/2)
+      r_wsize = wsize_;
+    else
+      r_wsize += 2;
+      
+    if ((int)wsize_ - (int)r_wsize <= 0) {
       wsize_ += 2;
       r_wsize = 0;
     }
@@ -91,6 +99,6 @@ void Controller::ack_received( const uint64_t sequence_number_acked,
    before sending one more datagram */
 unsigned int Controller::timeout_ms( void )
 {
-  return 105; // Part B
+  return 100; // Part B
   
 }
